@@ -87,7 +87,7 @@ const char index_html[] PROGMEM = R"rawliteral(
 </html>
 )rawliteral";
 
-// Redirects all unknown requests to our main page (captive portal behavior)
+// Redirects all unknown requests to main page (captive portal behavior)
 void captivePortal() {
   httpServer.sendHeader("Location", "http://192.168.4.1/", true);
   httpServer.send(302, "text/html", "<html><body><h1>Redirecting...</h1></body></html>");
