@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emergency Chat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    .chat-container {
+      width: 350px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #007bff;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #messages {
+      height: 350px;
+      overflow-y: auto;
+      padding: 10px;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+    }
+    .message {
+      max-width: 80%;
+      padding: 10px;
+      margin: 5px;
+      border-radius: 10px;
+      font-size: 0.9em;
+    }
+    .sent {
+      background: #007bff;
+      color: white;
+      align-self: flex-end;
+    }
+    .received {
+      background: #ddd;
+      color: black;
+      align-self: flex-start;
+    }
+    .chat-footer {
+      display: flex;
+      padding: 10px;
+      background: white;
+      border-top: 1px solid #ccc;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+    .sos-button {
+      background: #ff0000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-header">&#x1F6A8; Emergency Chat</div>
+    <div id="messages"></div>
+
+    <div class="chat-footer">
+      <input id="msg" type="text" placeholder="Type a message..." autofocus>
+      <button onclick="sendMessage()">Send</button>
+      <button class="sos-button" onclick="sendEmergencyMessage()">SOS</button>
+    </div>
+  </div>
+
+  <script>
+    var ws = new WebSocket('ws://' + window.location.hostname + ':81/');
+
+    ws.onmessage = function(event) {
+      addMessageToChat(event.data, "received");
+    };
+
+    function sendMessage() {
+      var input = document.getElementById("msg");
+      var message = input.value.trim();
+      
+      if (message !== "") {
+        ws.send(message);
+        addMessageToChat(message, "sent");
+        input.value = "";
+      }
+    }
+
+    function sendEmergencyMessage() {
+      var emergencyMsg = "\u{1F6A8} SOS! Need help!";
+      ws.send(emergencyMsg);
+      addMessageToChat(emergencyMsg, "sent");
+    }
+
+    function addMessageToChat(msg, type) {
+      var messages = document.getElementById("messages");
+      var msgDiv = document.createElement("div");
+      msgDiv.classList.add("message", type);
+      msgDiv.innerHTML = msg;
+      messages.appendChild(msgDiv);
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
