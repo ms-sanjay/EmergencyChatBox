@@ -10,8 +10,9 @@ The **Sender ESP8266** creates a Wi-Fi Access Point named **"Emergency_Network"*
 
 Users are automatically redirected to a **captive portal** webpage to type emergency messages.
 
-![Sender Access Point WiFi Setup](images/sender_wifi_ap.png)
-
+![Sender Access Point WiFi Setup](images/1.jpg)
+![Sender Access Point WiFi Setup](images/2.jpg)
+![Sender Access Point WiFi Setup](images/3.jpg)
 ---
 
 ## Message Input via Captive Portal
@@ -20,7 +21,7 @@ When connected to the network, users are redirected to a chat interface.
 
 Clicking **Send** transmits the message using **WebSockets** to the receiver device.
 
-![Captive Portal Web Interface](images/captive_portal_send.png)
+![Captive Portal Web Interface](images/4.jpg)
 
 ---
 
@@ -28,7 +29,7 @@ Clicking **Send** transmits the message using **WebSockets** to the receiver dev
 
 Once a message is received, the **Receiver ESP8266** blinks a **warning symbol** on the OLED display to alert the operator.
 
-![OLED Alert Symbol](images/oled_alert_symbol.png)
+![OLED Alert Symbol](images/5.jpg)
 
 ---
 
@@ -39,11 +40,7 @@ When the **push button** on the receiver is pressed:
 - An **acknowledgment message** is sent back to the sender
 - The OLED then shows the **last acknowledged message**
 
-![OLED Tick and Acknowledgment](images/oled_acknowledged.png)
+![OLED Tick and Acknowledgment](images/8.jpg)
+![OLED Tick and Acknowledgment](images/7.jpg)
 
----
-
-## Waiting for Next Message
-
-After acknowledgment, the OLED shows:
 
