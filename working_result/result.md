@@ -40,7 +40,7 @@ When the **push button** on the receiver is pressed:
 - An **acknowledgment message** is sent back to the sender
 - The OLED then shows the **last acknowledged message**
 
-![OLED Tick and Acknowledgment](images/8.jpg)
+![OLED Tick and Acknowledgment](images/6.jpg)
 ![OLED Tick and Acknowledgment](images/7.jpg)
 
 
