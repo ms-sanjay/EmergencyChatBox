@@ -24,12 +24,13 @@ Queued messages are handled in order, so each message is read and confirmed with
 
 For a complete explanation of the working, components, and screenshots:
 
-[emergency_chat_report (PDF)](emergency_chat_report.pdf)
+[project_report(PDF)](project_report.pdf)
 
 ## Files Included
 - `senderESP` – Code for Sender ESP8266 (AP + Web Server)
 - `receiverESP` – Code for Receiver ESP8266 (OLED + Button)
 - `Chat_interface.html` – Web interface served by the sender
-- `emergency_chat_report.pdf` – Full documentation with images
+- `project_report.pdf` – Full documentation with images
+- `working result` – Working result
 
 
