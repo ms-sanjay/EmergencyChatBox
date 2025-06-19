@@ -98,12 +98,12 @@
   </div>
 
   <script>
-    // GitHub wont support this commented code
-    // var ws = new WebSocket('ws://' + window.location.hostname + ':81/');
+    
+    var ws = new WebSocket('ws://' + window.location.hostname + ':81/');
 
-    // ws.onmessage = function(event) {
-    //   addMessageToChat(event.data, "received");
-    // };
+    ws.onmessage = function(event) {
+      addMessageToChat(event.data, "received");
+    };
 
     function sendMessage() {
       var input = document.getElementById("msg");
