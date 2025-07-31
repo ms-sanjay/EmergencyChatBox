@@ -110,9 +110,10 @@
       var message = input.value.trim();
       
       if (message !== "") {
-        ws.send(message);
+        
         addMessageToChat(message, "sent");
         input.value = "";
+        ws.send(message);
       }
     }
 
