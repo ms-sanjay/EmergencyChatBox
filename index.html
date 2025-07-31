@@ -99,7 +99,7 @@
 
   <script>
     
-    var ws = new WebSocket('ws://' + window.location.hostname + ':81/');
+    // var ws = new WebSocket('ws://' + window.location.hostname + ':81/');
 
     ws.onmessage = function(event) {
       addMessageToChat(event.data, "received");
@@ -113,13 +113,13 @@
         
         addMessageToChat(message, "sent");
         input.value = "";
-        ws.send(message);
+        // ws.send(message);
       }
     }
 
     function sendEmergencyMessage() {
       var emergencyMsg = "\u{1F6A8} SOS! Need help!";
-      ws.send(emergencyMsg);
+      // ws.send(emergencyMsg);
       addMessageToChat(emergencyMsg, "sent");
     }
 
